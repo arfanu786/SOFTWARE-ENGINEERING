@@ -3,27 +3,30 @@
 #include <fstream>
 #include "librarian.h"
 
+
 bool fileExists(const std::string& fileName) {
     std::ifstream file(fileName);
     return file.good();
 }
 
 int main() {
-    librarian librarianOBJ(1, 1000, "John Doe", "123 Fake Street", "john@gmail.com");
+    librarian librarianOBJ(1, 1000, "Arfanul Shouid", "71 Maple Street", "arfanul@gmail.com");
     std::string fileName;
 
+    bool checkFile;
     do {
-        std::cout << "Enter file name (e.g., library_books.csv): ";
+        std::cout << "Enter file name (e.g, file.csv): ";
         getline(std::cin, fileName);
-        std::cout << "Checking if file exists: " << fileName << std::endl;  // Debugging output
-        if (fileExists(fileName) == false)
+        checkFile = fileExists(fileName);
+        if (checkFile == false) {
             std::cout << "File does not exist. Enter Again!" << std::endl;
-    } while (fileExists(fileName) == false);
-
+            
+        }
+    } while(checkFile == false);
     librarianOBJ.inputBooks(fileName);
-    system("cls");
+    
 
-    while (true) {
+    while(true) {
         char choice;
         std::cout << "MENU" << std::endl;
         std::cout << "----" << std::endl;
@@ -69,8 +72,7 @@ int main() {
             default:
                 std::cout << "Invalid choice." << std::endl;
         }
-        system("pause");
-        system("cls");
+       
     }
 
     return 0;
