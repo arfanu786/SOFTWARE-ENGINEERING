@@ -1,5 +1,5 @@
 #include "book.h"
-
+//constructor
 book::book(int bookID, std::string bookName, std::string authorFirstName, std::string authorLastName, std::string bookType) {
     this->bookID = bookID;
     this->bookName = bookName;
@@ -12,7 +12,7 @@ book::book(int bookID, std::string bookName, std::string authorFirstName, std::s
 void book::returnBook() {
     this->borrower = nullptr;  // Reset borrower to nullptr
 }
-
+//implementation of getters
 int book::getBookID() {
     return this->bookID;
 }

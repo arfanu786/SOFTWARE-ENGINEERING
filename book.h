@@ -1,4 +1,4 @@
-#ifndef BOOK_H
+#ifndef BOOK_H //  Header file for book class
 #define BOOK_H
 
 #include <string>
@@ -16,8 +16,8 @@ private:
 
 public:
     book(int bookID, std::string bookName, std::string authorFirstName, std::string authorLastName, std::string bookType);
-    void returnBook();
-    int getBookID();
+    void returnBook(); // marking as not borrowed 
+    int getBookID(); //getters
     std::string getBookName();
     std::string getAuthorFirstName();
     std::string getAuthorLastName();

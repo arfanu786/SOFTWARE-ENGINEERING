@@ -1,7 +1,7 @@
-#include "person.h"
+#include "person.h"//person class implementation
 
 void person::setName(std::string name) {
-    this->name = name;
+    this->name = name;//setter implementing
 }
 
 void person::setAddress(std::string address) {
@@ -11,7 +11,7 @@ void person::setAddress(std::string address) {
 void person::setEmail(std::string email) {
     this->email = email;
 }
-
+//getter implementing
 std::string person::getName() {
     return this->name;
 }

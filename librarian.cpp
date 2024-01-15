@@ -24,15 +24,15 @@ void librarian::displayAllBooks() {
         std::cout << "---------------------------" << std::endl;
     }
 }
-
+//getters implemented
 int librarian::getStaffID() {
     return this->staffID;
 }
-
+//implemnted seters
 void librarian::setStaffID(int staffID) {
     this->staffID = staffID;
 }
-
+// view borrowed books details
 void librarian::displayBorrowedBooks(int memberID) {
     for (int i = 0; i < members.size(); i++) {
         if (members[i].getMemberID() == memberID) {
@@ -68,7 +68,7 @@ void librarian::addMember() {
     member newMember(id, name, address, email);
     members.push_back(newMember);
 }
-
+//issuing books to members
 void librarian::issueBook(int memberID, int bookID) {
     for (int i = 0; i < members.size(); i++) {
         if (members[i].getMemberID() == memberID) {
@@ -85,7 +85,7 @@ void librarian::issueBook(int memberID, int bookID) {
     }
     std::cout << "Member not found." << std::endl;
 }
-
+//taking back books from members
 void librarian::returnBook(int memberID, int bookID) {
     for (int i = 0; i < members.size(); i++) {
         if (members[i].getMemberID() == memberID) {
@@ -104,7 +104,7 @@ void librarian::returnBook(int memberID, int bookID) {
     }
     std::cout << "Member not found." << std::endl;
 }
-
+//csv file information read
 void librarian::inputBooks(std::string filename) {
     std::ifstream file(filename);
 
@@ -128,5 +128,5 @@ void librarian::inputBooks(std::string filename) {
         std::string bookType = rowData[5];
 
         books.push_back(book(bookID, bookName, authorFirstName, authorLastName, bookType));
-    }
+    }//shows a line of data from csv
 }
