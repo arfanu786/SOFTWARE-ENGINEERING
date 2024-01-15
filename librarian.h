@@ -14,7 +14,7 @@ private:
     std::vector<book> books;
     
 public:
-    librarian(int staffID, int salary, std::string name, std::string address, std::string email);
+    librarian(int staffID, std::string name, std::string address, std::string email);
     void addMember();
     void issueBook(int memberID, int bookID);
     void returnBook(int memberID, int bookID);

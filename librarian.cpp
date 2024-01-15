@@ -5,19 +5,15 @@
 #include <iostream>
 #include "book.h"
 #include "member.h"
-#include <time.h>
-#include <iomanip>
 
-librarian::librarian(int staffID, int salary, std::string name, std::string address, std::string email) {
+librarian::librarian(int staffID, std::string name, std::string address, std::string email) {
     this->staffID = staffID;
-    this->salary = salary;
     this->setName(name);
     this->setAddress(address);
     this->setEmail(email);
 }
 
-void librarian::displayAllBooks(){
-    
+void librarian::displayAllBooks() {
     std::cout << "All books in the library:" << std::endl;
     for (int i = 0; i < books.size(); i++) {
         std::cout << "Book " << i + 1 << " details:" << std::endl;
@@ -37,16 +33,7 @@ void librarian::setStaffID(int staffID) {
     this->staffID = staffID;
 }
 
-int librarian::getSalary() {
-    return this->salary;
-}
-
-void librarian::setSalary(int salary) {
-    this->salary = salary;
-}
-
 void librarian::displayBorrowedBooks(int memberID) {
-    
     for (int i = 0; i < members.size(); i++) {
         if (members[i].getMemberID() == memberID) {
             std::vector<book> booksBorrowed = members[i].getBooksBorrowed();
@@ -88,12 +75,6 @@ void librarian::issueBook(int memberID, int bookID) {
             for (int j = 0; j < books.size(); j++) {
                 if (books[j].getBookID() == bookID) {
                     members[i].setBooksBorrowed(books[j]);
-
-                    // Set the due date to 3 days from now
-                    std::time_t t = std::time(0);   // get time now
-                    std::tm* now = std::localtime(&t);
-                    now->tm_mday += 3;  // add 3 days
-                    books[j].borrowBook(&members[i], *now);
                     std::cout << "Book issued." << std::endl;
                     return;
                 }
@@ -112,7 +93,6 @@ void librarian::returnBook(int memberID, int bookID) {
             for (int j = 0; j < books.size(); j++) {
                 if (books[j].getBookID() == bookID) {
                     // Remove the book from the borrowed books list
-                    books[j].returnBook();
                     members[i].deleteBorrowedBook(bookID);
                     std::cout << "Book returned." << std::endl;
                     return;
